@@ -1,0 +1,17 @@
+D:\GitProjects\TPSIM4\TP4\TP4\bin\Debug\net6.0-windows\TP4.exe
+D:\GitProjects\TPSIM4\TP4\TP4\bin\Debug\net6.0-windows\TP4.deps.json
+D:\GitProjects\TPSIM4\TP4\TP4\bin\Debug\net6.0-windows\TP4.runtimeconfig.json
+D:\GitProjects\TPSIM4\TP4\TP4\bin\Debug\net6.0-windows\TP4.dll
+D:\GitProjects\TPSIM4\TP4\TP4\bin\Debug\net6.0-windows\TP4.pdb
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.csproj.AssemblyReference.cache
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.csproj.GenerateResource.cache
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.AssemblyInfoInputs.cache
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.AssemblyInfo.cs
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.csproj.CoreCompileInputs.cache
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.dll
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\refint\TP4.dll
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.pdb
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.genruntimeconfig.cache
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\ref\TP4.dll
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.Formulario.resources
