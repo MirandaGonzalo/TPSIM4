@@ -33,7 +33,7 @@
             this.txtN = new System.Windows.Forms.TextBox();
             this.txtDesde = new System.Windows.Forms.TextBox();
             this.btnGenerar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvIteraciones = new System.Windows.Forms.DataGridView();
             this.Reloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RNDDemanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Demanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +54,7 @@
             this.txtPromedio = new System.Windows.Forms.TextBox();
             this.lblHasta = new System.Windows.Forms.Label();
             this.txtHasta = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIteraciones)).BeginInit();
             this.SuspendLayout();
             // 
             // lblN
@@ -106,10 +106,10 @@
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
-            // dataGridView1
+            // dgvIteraciones
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvIteraciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIteraciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Reloj,
             this.RNDDemanda,
             this.Demanda,
@@ -124,11 +124,11 @@
             this.Ks,
             this.CostoTotal,
             this.CostoAcumulado});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 229);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1469, 245);
-            this.dataGridView1.TabIndex = 5;
+            this.dgvIteraciones.Location = new System.Drawing.Point(30, 229);
+            this.dgvIteraciones.Name = "dgvIteraciones";
+            this.dgvIteraciones.RowTemplate.Height = 25;
+            this.dgvIteraciones.Size = new System.Drawing.Size(1469, 245);
+            this.dgvIteraciones.TabIndex = 5;
             // 
             // Reloj
             // 
@@ -263,7 +263,7 @@
             this.Controls.Add(this.txtPromedio);
             this.Controls.Add(this.lblPromedio);
             this.Controls.Add(this.lblRes);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvIteraciones);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.txtDesde);
             this.Controls.Add(this.txtN);
@@ -272,7 +272,7 @@
             this.Name = "Formulario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulario";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIteraciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,7 +285,7 @@
         private TextBox txtN;
         private TextBox txtDesde;
         private Button btnGenerar;
-        private DataGridView dataGridView1;
+        private DataGridView dgvIteraciones;
         private DataGridViewTextBoxColumn Mes;
         private DataGridViewTextBoxColumn Reloj;
         private DataGridViewTextBoxColumn RNDDemanda;

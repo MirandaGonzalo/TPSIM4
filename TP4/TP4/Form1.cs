@@ -88,16 +88,20 @@ namespace TP4
             return result;
         }
 
+        private void necesitoEntrega(Registro registro)
+        {
+            Random random = new Random();
+            registro.rndDemora = random.NextDouble();
+            registro.demora = getPlazoEntrega(registro.rndDemora);
+            registro.esperaPedido = true;
+            registro.llegadaPedido = registro.mes + registro.demora;
+            registro.llegadaPedido = registro.mes + registro.demora;
+        }
+
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            Informacion infoConsigna = new Informacion()
-            {
-                pedido = 20,
-                condicionPedido = 12,
-                costoAlmacenamiento = 600,
-                ventaPerdida = 4350,
-                costoOrdenamiento = 570
-            };
+            Informacion infoConsigna = new Informacion();
+            dgvIteraciones.Rows.Clear();
             var n = Convert.ToInt64(txtN.Text);
             var desde = Convert.ToInt32(txtDesde.Text);
             var hasta = Convert.ToInt32(txtHasta.Text);
@@ -113,7 +117,6 @@ namespace TP4
             {
                 registro.mes += 1;
                 
-             
                 if (registro.mes == registro.llegadaPedido && registro.esperaPedido)
                 {
                     registro.stock += infoConsigna.pedido;
@@ -129,10 +132,7 @@ namespace TP4
                     //Tengo que pedir - Cumplo la condición de pedido y no hay un pedido.
                     if ((registro.stock - registro.demanda) <= infoConsigna.condicionPedido && !registro.esperaPedido)
                     {
-                        registro.rndDemora = random.NextDouble();
-                        registro.demora = getPlazoEntrega(registro.rndDemora);
-                        registro.esperaPedido = true;
-                        registro.llegadaPedido = registro.mes + registro.demora;
+                        necesitoEntrega(registro);
                         registro.costoOrdenamiento = infoConsigna.costoOrdenamiento;
                     }
                     registro.stock -= registro.demanda;
@@ -144,10 +144,7 @@ namespace TP4
                     registro.costoExterno = (registro.demanda - registro.stock) * infoConsigna.ventaPerdida;
                     if (!registro.esperaPedido)
                     {
-                        registro.rndDemora = random.NextDouble();
-                        registro.demora = getPlazoEntrega(registro.rndDemora);
-                        registro.esperaPedido = true;
-                        registro.llegadaPedido = registro.mes + registro.demora;
+                        necesitoEntrega(registro);
                     }
                     registro.stock = 0;
                     registro.costoMantenimiento = 0;
@@ -179,11 +176,9 @@ namespace TP4
                         registro.total.ToString(),
                         registro.totalAcumulado.ToString()
                     };
-                    dataGridView1.Rows.Add(fila);
+                    dgvIteraciones.Rows.Add(fila);
                 }
-                
 #pragma warning restore CS8601 // Posible asignación de referencia nula
-                
             }
             lblRes.Text = "Generados";
             txtPromedio.Text = "$ " + (promedio / n).ToString();
