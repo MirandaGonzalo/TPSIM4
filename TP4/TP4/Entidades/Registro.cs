@@ -22,6 +22,9 @@ namespace TP4.Entidades
         public double costoExterno { get; set; } = 0;
         public double total { get; set; }
         public double totalAcumulado { get; set; }
+        public double minimoParcial { get; set; }
+        public double maximoParcial { get; set; }
+        public double promedioParcial { get; set; }
     }
 
 }

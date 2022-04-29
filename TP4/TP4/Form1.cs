@@ -126,15 +126,16 @@ namespace TP4
             dgvIteraciones.Rows.Clear();
             var n = Convert.ToInt64(txtN.Text);
             var desde = Convert.ToInt32(txtDesde.Text);
-            var hasta = Convert.ToInt32(txtHasta.Text);
+            var hasta = desde + 400;
             lblRes.Text = "Por Generar";
             Registro registro = new Registro();
             registro.stock = 25;
-            Registro registro2 = new Registro();
             Random random = new Random();
-            lblRes.Text = "Generando ...";
-            double promedio = 0;
+            lblRes.Text = "Generando ...";            
             bool prendio = true;
+            bool primero = true;
+            double minimo = 0;
+            double maximo = 0;
             for (int i = 0; i < n; i++)
             {
                 registro.mes += 1;
@@ -185,11 +186,33 @@ namespace TP4
 
                 registro.total = registro.costoExterno + registro.costoMantenimiento + registro.costoOrdenamiento;
 
-                promedio += registro.total;
+                if (primero)
+                {
+                    registro.minimoParcial = registro.total;
+                    registro.maximoParcial = registro.total;
+                    registro.promedioParcial = registro.total;
+                    minimo = registro.minimoParcial;
+                    maximo = registro.maximoParcial;
+                    primero = false;
+                }
+                else
+                {
+                    if (registro.total < minimo)
+                    {
+                        registro.minimoParcial = registro.total;
+                        minimo = registro.minimoParcial;
+                    }
+                    if (registro.total > maximo) {
+                        registro.maximoParcial = registro.total;
+                        maximo = registro.maximoParcial;
+                    } 
+                };
+                
                 registro.totalAcumulado += registro.total;
+                registro.promedioParcial = registro.totalAcumulado / registro.mes;
 
 #pragma warning disable CS8601 
-                if (registro.mes >= desde && registro.mes <= hasta)
+                if (registro.mes >= desde && registro.mes <= hasta || registro.mes == n)
                 {
                     var fila = new string[]{
                         registro.mes.ToString(),
@@ -205,14 +228,26 @@ namespace TP4
                         registro.costoMantenimiento.ToString(),
                         registro.costoExterno.ToString(),
                         registro.total.ToString(),
-                        registro.totalAcumulado.ToString()
-                    };
+                        registro.totalAcumulado.ToString(),
+                        registro.minimoParcial.ToString(),
+                        registro.maximoParcial.ToString(),
+                        registro.promedioParcial.ToString()
+                        //(Math.Truncate(((registro.promedioParcial / n) * 100)) / 100).ToString()
+                };
                     dgvIteraciones.Rows.Add(fila);
                 }
 #pragma warning restore CS8601 
             }
+            dgvIteraciones.Rows[dgvIteraciones.RowCount - 1].Cells[13].Style.BackColor = Color.Yellow;
             lblRes.Text = "Generados";
-            txtPromedio.Text = "$ " + Math.Truncate((promedio / n) * 1000 / 1000).ToString();
+            txtPromedio.Text = "$ " + Math.Truncate((registro.promedioParcial / n) * 1000 / 1000).ToString();
+            txtMinimo.Text = "$ " + registro.minimoParcial.ToString();
+            txtMaximo.Text = "$ " + registro.maximoParcial.ToString();
+        }
+
+        private void Formulario_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtN;
         }
     }
 } 

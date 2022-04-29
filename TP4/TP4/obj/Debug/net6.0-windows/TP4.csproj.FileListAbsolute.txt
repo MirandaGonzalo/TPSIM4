@@ -15,3 +15,4 @@ D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.pdb
 D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.genruntimeconfig.cache
 D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\ref\TP4.dll
 D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.Formulario.resources
+D:\GitProjects\TPSIM4\TP4\TP4\obj\Debug\net6.0-windows\TP4.Properties.Resources.resources
