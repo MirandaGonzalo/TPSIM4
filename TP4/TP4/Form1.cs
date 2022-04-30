@@ -86,7 +86,7 @@ namespace TP4
         private int getPlazoEntrega(double? rnd)
         {
             var result = -1;
-            
+
             for (int i = 0; i < tablaHastaPlazo.Count; i++)
             {
                 if (rnd < tablaHastaPlazo[i])
@@ -121,25 +121,41 @@ namespace TP4
             registro.esperaPedido = true;
         }
 
-        private void btnGenerar_Click(object sender, EventArgs e)
+        private void agregarFila(Registro registro)
         {
-            dgvIteraciones.Rows.Clear();
-            var n = Convert.ToInt64(txtN.Text);
-            var desde = Convert.ToInt32(txtDesde.Text);
-            var hasta = desde + 400;
-            lblRes.Text = "Por Generar";
-            Registro registro = new Registro();
-            registro.stock = 25;
+#pragma warning disable CS8601
+            var fila = new string[]{
+                registro.mes.ToString(),
+                registro.rnd.ToString(),
+                registro.demanda.ToString(),
+                (registro.prendio) ? registro.rndDemora.ToString() : " ",
+                (registro.prendio) ? registro.demora.ToString() : " ",
+                registro.esperaPedido && registro.prendio ? "Si" : " ",
+                registro.esperaPedido && registro.prendio ? registro.llegadaPedido.ToString() : " ",
+                (registro.disponible) ? infoConsigna.pedido.ToString() : " ",
+                registro.stock.ToString(),
+                registro.costoOrdenamiento.ToString(),
+                registro.costoMantenimiento.ToString(),
+                registro.costoExterno.ToString(),
+                registro.total.ToString(),
+                registro.totalAcumulado.ToString(),
+                registro.minimoParcial.ToString(),
+                registro.maximoParcial.ToString(),
+                registro.promedioParcial.ToString()                        
+            };
+            dgvIteraciones.Rows.Add(fila);
+        }
+
+        private void generarIteraciones(Registro registro, int n, int desde, int hasta)
+        {
             Random random = new Random();
-            lblRes.Text = "Generando ...";            
-            bool prendio = true;
             bool primero = true;
             double minimo = 0;
             double maximo = 0;
             for (int i = 0; i < n; i++)
             {
                 registro.mes += 1;
-                prendio = false;
+                registro.prendio = false;
                 if (registro.mes == registro.llegadaPedido && registro.esperaPedido)
                 {
                     registro.stock += infoConsigna.pedido;
@@ -161,7 +177,7 @@ namespace TP4
                     if ((registro.stock - registro.demanda) <= infoConsigna.condicionPedido && !registro.esperaPedido)
                     {
                         necesitoEntrega(registro, infoConsigna.costoOrdenamiento);
-                        prendio = true;
+                        registro.prendio = true;
                     }
                     registro.stock -= registro.demanda;
                     registro.costoMantenimiento = registro.stock * infoConsigna.costoAlmacenamiento;
@@ -173,13 +189,13 @@ namespace TP4
                     if (!registro.esperaPedido)
                     {
                         necesitoEntrega(registro, infoConsigna.costoOrdenamiento);
-                        prendio = true;
+                        registro.prendio = true;
                     }
                     registro.stock = 0;
                     registro.costoMantenimiento = 0;
                 }
 
-                if (registro.mes != registro.llegadaPedido && registro.esperaPedido && !prendio)
+                if (registro.mes != registro.llegadaPedido && registro.esperaPedido && !registro.prendio)
                 {
                     registro.costoOrdenamiento = 0;
                 }
@@ -202,45 +218,45 @@ namespace TP4
                         registro.minimoParcial = registro.total;
                         minimo = registro.minimoParcial;
                     }
-                    if (registro.total > maximo) {
+                    if (registro.total > maximo)
+                    {
                         registro.maximoParcial = registro.total;
                         maximo = registro.maximoParcial;
-                    } 
+                    }
                 };
-                
+
                 registro.totalAcumulado += registro.total;
                 registro.promedioParcial = registro.totalAcumulado / registro.mes;
 
-#pragma warning disable CS8601 
-                if (registro.mes >= desde && registro.mes <= hasta || registro.mes == n)
+
+                if (registro.mes >= desde && registro.mes <= hasta)
                 {
-                    var fila = new string[]{
-                        registro.mes.ToString(),
-                        registro.rnd.ToString(),
-                        registro.demanda.ToString(),
-                        (prendio) ? registro.rndDemora.ToString() : " ",
-                        (prendio) ? registro.demora.ToString() : " ",
-                        registro.esperaPedido && prendio ? "Si" : " ",
-                        registro.esperaPedido && prendio ? registro.llegadaPedido.ToString() : " ",
-                        (registro.disponible) ? infoConsigna.pedido.ToString() : " ",
-                        registro.stock.ToString(),
-                        registro.costoOrdenamiento.ToString(),
-                        registro.costoMantenimiento.ToString(),
-                        registro.costoExterno.ToString(),
-                        registro.total.ToString(),
-                        registro.totalAcumulado.ToString(),
-                        registro.minimoParcial.ToString(),
-                        registro.maximoParcial.ToString(),
-                        registro.promedioParcial.ToString()
-                        //(Math.Truncate(((registro.promedioParcial / n) * 100)) / 100).ToString()
-                };
-                    dgvIteraciones.Rows.Add(fila);
-                }
-#pragma warning restore CS8601 
+                    agregarFila(registro);   
+                } 
+            }
+        }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            dgvIteraciones.Rows.Clear();
+            var n = Convert.ToInt64(txtN.Text);
+            var desde = Convert.ToInt32(txtDesde.Text);
+            var hasta = desde + 400;
+            lblRes.Text = "Por Generar";
+            Registro registro = new Registro();
+            registro.stock = 25;
+            lblRes.Text = "Generando ...";
+            generarIteraciones(registro,(int)n,desde,hasta);
+            if (n != hasta)
+            {
+                agregarFila(registro);
             }
             dgvIteraciones.Rows[dgvIteraciones.RowCount - 1].Cells[13].Style.BackColor = Color.Yellow;
+            dgvIteraciones.Rows[dgvIteraciones.RowCount - 1].Cells[14].Style.BackColor = Color.Yellow;
+            dgvIteraciones.Rows[dgvIteraciones.RowCount - 1].Cells[15].Style.BackColor = Color.Yellow;
+            dgvIteraciones.Rows[dgvIteraciones.RowCount - 1].Cells[16].Style.BackColor = Color.Yellow;
             lblRes.Text = "Generados";
-            txtPromedio.Text = "$ " + Math.Truncate((registro.promedioParcial / n) * 1000 / 1000).ToString();
+            txtPromedio.Text = "$ " + registro.promedioParcial.ToString();
             txtMinimo.Text = "$ " + registro.minimoParcial.ToString();
             txtMaximo.Text = "$ " + registro.maximoParcial.ToString();
         }
@@ -250,4 +266,4 @@ namespace TP4
             this.ActiveControl = txtN;
         }
     }
-} 
+}

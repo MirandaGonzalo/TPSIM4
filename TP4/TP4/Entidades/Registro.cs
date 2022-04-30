@@ -14,7 +14,8 @@ namespace TP4.Entidades
         public double? rndDemora { get; set; }
         public int? demora { get; set; }
         public bool esperaPedido { get; set; }
-        public int? llegadaPedido { get; set; }        
+        public int? llegadaPedido { get; set; }
+        public bool prendio { get; set; } = true;
         public int stock { get; set; }
         public bool disponible { get; set; }
         public double costoOrdenamiento { get; set; } = 0;
@@ -25,6 +26,7 @@ namespace TP4.Entidades
         public double minimoParcial { get; set; }
         public double maximoParcial { get; set; }
         public double promedioParcial { get; set; }
+
     }
 
 }

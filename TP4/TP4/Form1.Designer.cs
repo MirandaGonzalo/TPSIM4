@@ -34,17 +34,6 @@
             this.txtDesde = new System.Windows.Forms.TextBox();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dgvIteraciones = new System.Windows.Forms.DataGridView();
-            this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblRes = new System.Windows.Forms.Label();
-            this.lblPromedio = new System.Windows.Forms.Label();
-            this.txtPromedio = new System.Windows.Forms.TextBox();
-            this.lblMinimo = new System.Windows.Forms.Label();
-            this.txtMinimo = new System.Windows.Forms.TextBox();
-            this.lblMaximo = new System.Windows.Forms.Label();
-            this.txtMaximo = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.Reloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RNDDemanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Demanda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +51,17 @@
             this.Minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Maximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblRes = new System.Windows.Forms.Label();
+            this.lblPromedio = new System.Windows.Forms.Label();
+            this.txtPromedio = new System.Windows.Forms.TextBox();
+            this.lblMinimo = new System.Windows.Forms.Label();
+            this.txtMinimo = new System.Windows.Forms.TextBox();
+            this.lblMaximo = new System.Windows.Forms.Label();
+            this.txtMaximo = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIteraciones)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -144,6 +144,91 @@
             this.dgvIteraciones.RowTemplate.Height = 25;
             this.dgvIteraciones.Size = new System.Drawing.Size(1482, 245);
             this.dgvIteraciones.TabIndex = 5;
+            // 
+            // Reloj
+            // 
+            this.Reloj.HeaderText = "Reloj (Mes)";
+            this.Reloj.Name = "Reloj";
+            // 
+            // RNDDemanda
+            // 
+            this.RNDDemanda.HeaderText = "RND Demanda";
+            this.RNDDemanda.Name = "RNDDemanda";
+            // 
+            // Demanda
+            // 
+            this.Demanda.HeaderText = "Demanda";
+            this.Demanda.Name = "Demanda";
+            // 
+            // RNDDemora
+            // 
+            this.RNDDemora.HeaderText = "RND Demora";
+            this.RNDDemora.Name = "RNDDemora";
+            // 
+            // Demora
+            // 
+            this.Demora.HeaderText = "Demora";
+            this.Demora.Name = "Demora";
+            // 
+            // Pedido
+            // 
+            this.Pedido.HeaderText = "Orden/Pedido";
+            this.Pedido.Name = "Pedido";
+            // 
+            // LlegadaPedido
+            // 
+            this.LlegadaPedido.HeaderText = "LlegadaPedido";
+            this.LlegadaPedido.Name = "LlegadaPedido";
+            // 
+            // Disponible
+            // 
+            this.Disponible.HeaderText = "Disponible";
+            this.Disponible.Name = "Disponible";
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            // 
+            // Ko
+            // 
+            this.Ko.HeaderText = "Ko";
+            this.Ko.Name = "Ko";
+            // 
+            // Km
+            // 
+            this.Km.HeaderText = "Km";
+            this.Km.Name = "Km";
+            // 
+            // Ks
+            // 
+            this.Ks.HeaderText = "Ks";
+            this.Ks.Name = "Ks";
+            // 
+            // CostoTotal
+            // 
+            this.CostoTotal.HeaderText = "Costo Total";
+            this.CostoTotal.Name = "CostoTotal";
+            // 
+            // CostoAcumulado
+            // 
+            this.CostoAcumulado.HeaderText = "Costo Acumulado";
+            this.CostoAcumulado.Name = "CostoAcumulado";
+            // 
+            // Minimo
+            // 
+            this.Minimo.HeaderText = "Minimo";
+            this.Minimo.Name = "Minimo";
+            // 
+            // Maximo
+            // 
+            this.Maximo.HeaderText = "Maximo";
+            this.Maximo.Name = "Maximo";
+            // 
+            // Promedio
+            // 
+            this.Promedio.HeaderText = "Promedio";
+            this.Promedio.Name = "Promedio";
             // 
             // Mes
             // 
@@ -253,91 +338,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(210, 65);
             this.panel3.TabIndex = 17;
-            // 
-            // Reloj
-            // 
-            this.Reloj.HeaderText = "Reloj (Mes)";
-            this.Reloj.Name = "Reloj";
-            // 
-            // RNDDemanda
-            // 
-            this.RNDDemanda.HeaderText = "RND Demanda";
-            this.RNDDemanda.Name = "RNDDemanda";
-            // 
-            // Demanda
-            // 
-            this.Demanda.HeaderText = "Demanda";
-            this.Demanda.Name = "Demanda";
-            // 
-            // RNDDemora
-            // 
-            this.RNDDemora.HeaderText = "RND Demora";
-            this.RNDDemora.Name = "RNDDemora";
-            // 
-            // Demora
-            // 
-            this.Demora.HeaderText = "Demora";
-            this.Demora.Name = "Demora";
-            // 
-            // Pedido
-            // 
-            this.Pedido.HeaderText = "Orden/Pedido";
-            this.Pedido.Name = "Pedido";
-            // 
-            // LlegadaPedido
-            // 
-            this.LlegadaPedido.HeaderText = "LlegadaPedido";
-            this.LlegadaPedido.Name = "LlegadaPedido";
-            // 
-            // Disponible
-            // 
-            this.Disponible.HeaderText = "Disponible";
-            this.Disponible.Name = "Disponible";
-            // 
-            // Stock
-            // 
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            // 
-            // Ko
-            // 
-            this.Ko.HeaderText = "Ko";
-            this.Ko.Name = "Ko";
-            // 
-            // Km
-            // 
-            this.Km.HeaderText = "Km";
-            this.Km.Name = "Km";
-            // 
-            // Ks
-            // 
-            this.Ks.HeaderText = "Ks";
-            this.Ks.Name = "Ks";
-            // 
-            // CostoTotal
-            // 
-            this.CostoTotal.HeaderText = "Costo Total";
-            this.CostoTotal.Name = "CostoTotal";
-            // 
-            // CostoAcumulado
-            // 
-            this.CostoAcumulado.HeaderText = "Costo Acumulado";
-            this.CostoAcumulado.Name = "CostoAcumulado";
-            // 
-            // Minimo
-            // 
-            this.Minimo.HeaderText = "Minimo";
-            this.Minimo.Name = "Minimo";
-            // 
-            // Maximo
-            // 
-            this.Maximo.HeaderText = "Maximo";
-            this.Maximo.Name = "Maximo";
-            // 
-            // Promedio
-            // 
-            this.Promedio.HeaderText = "Promedio";
-            this.Promedio.Name = "Promedio";
             // 
             // Formulario
             // 
